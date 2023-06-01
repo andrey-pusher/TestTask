@@ -1,0 +1,15 @@
+﻿@using Domain.Models.ViewModels;
+@model IEnumerable<BanksTotalViewModel>
+
+<form asp-controller="BanksTotal">
+    <label for="total">Валюта</label>
+    <input type="text" name="total">
+    <label for="id">Банк</label>
+    <select id="bankSelector" name="id">
+        @foreach (var item in Model.Select(item => item))
+        {
+            <option value="@item.Id">@item.BankModel.Name</option>
+        }
+    </select>
+    <input asp-action="Create" type="submit" name="create" value="Отправить" />
+</form>
